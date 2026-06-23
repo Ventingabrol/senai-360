@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1hasvdhpu16i" path="res://Assets/background.png" id="1_0ll74"]
 [ext_resource type="PackedScene" uid="uid://b6jj3ydwx2vi" path="res://Scenes/player.tscn" id="2_p3ued"]
+[ext_resource type="PackedScene" uid="uid://dbp8mhhdma16l" path="res://Scenes/missil.tscn" id="3_2fo43"]
 
 [node name="Space" type="Node2D" unique_id=2128164398]
 
@@ -1929,3 +1930,6 @@ texture = ExtResource("1_0ll74")
 
 [node name="Player" parent="." unique_id=104140774 instance=ExtResource("2_p3ued")]
 position = Vector2(8704, 7112)
+
+[node name="missil" parent="." unique_id=1922328315 instance=ExtResource("3_2fo43")]
+position = Vector2(8918, 7107)

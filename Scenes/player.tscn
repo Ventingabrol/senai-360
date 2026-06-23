@@ -1,82 +1,76 @@
 [gd_scene format=3 uid="uid://b6jj3ydwx2vi"]
 
 [ext_resource type="Script" uid="uid://gjckrajek8tt" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://cc7w8u5wnwivc" path="res://Assets/foguete_spritesheet.png" id="1_v0iea"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(0, 0, 352, 384)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(352, 0, 352, 384)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(704, 0, 352, 384)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(1056, 0, 352, 384)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(352, 384, 352, 384)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
-atlas = ExtResource("1_v0iea")
-region = Rect2(704, 384, 352, 384)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x3wgy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cvnsp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6t5aa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgqql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fkybt")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3wgy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3smsa")
-}],
-"loop": true,
-"name": &"impulse",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://j5rnax1xqnkq" path="res://Assets/sprites/foguete/foguete.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://c1bw2t6220pg8" path="res://Assets/sprites/fogo/fogo1.png" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://cgw0dk8yd30jx" path="res://Assets/sprites/fogo/fogo2.png" id="4_3smsa"]
+[ext_resource type="Texture2D" uid="uid://dpm82b0pdf84l" path="res://Assets/sprites/fogo/fogo3.png" id="5_8erm5"]
+[ext_resource type="Texture2D" uid="uid://bi8xymrayitd1" path="res://Assets/sprites/fogo/fogo4.png" id="6_f1ek2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
 radius = 5.0
 height = 26.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx1dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x3wgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3smsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8erm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f1ek2")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
 [node name="Player" type="RigidBody2D" unique_id=104140774]
 script = ExtResource("1_cvnsp")
-impulso = 5.0
+impulso = 2.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1721138098]
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_x3wgy")
-animation = &"impulse"
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1205068779]
+scale = Vector2(0.016, 0.016)
+texture = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1981146235]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_6t5aa")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=291870337]
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 limit_right = 18424
 limit_bottom = 15360
+position_smoothing_enabled = true
+
+[node name="foguin" type="Node2D" parent="." unique_id=2009028632]
+visible = false
+
+[node name="fogo" type="AnimatedSprite2D" parent="foguin" unique_id=1295454633]
+position = Vector2(-4, 23)
+scale = Vector2(0.01, 0.01)
+sprite_frames = SubResource("SpriteFrames_tx1dd")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="fogo2" type="AnimatedSprite2D" parent="foguin" unique_id=491871292]
+position = Vector2(4, 23)
+scale = Vector2(0.01, 0.01)
+sprite_frames = SubResource("SpriteFrames_tx1dd")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="fogo3" type="AnimatedSprite2D" parent="foguin" unique_id=1525799771]
+position = Vector2(4.7683716e-07, 21.000002)
+scale = Vector2(0.0165, 0.01)
+sprite_frames = SubResource("SpriteFrames_tx1dd")
+animation = &"normal"
+autoplay = "normal"

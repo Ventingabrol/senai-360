@@ -1,35 +1,49 @@
 [gd_scene format=3 uid="uid://dbp8mhhdma16l"]
 
-[ext_resource type="Texture2D" uid="uid://vj3fsuu75ovs" path="res://Assets/sprites/missil/missil1.png" id="1_f2gms"]
-[ext_resource type="Texture2D" uid="uid://bmkcq2h7qxmwh" path="res://Assets/sprites/missil/missil2.png" id="2_7mlxe"]
-[ext_resource type="Texture2D" uid="uid://chu7hst81ogvx" path="res://Assets/sprites/missil/missil3.png" id="3_svc7t"]
+[ext_resource type="Script" uid="uid://bsq5hvncfxde4" path="res://Scripts/missil.gd" id="1_46ht6"]
+[ext_resource type="Texture2D" uid="uid://cbmebe438bdgd" path="res://Assets/sprites/missil/missil.png" id="1_svc7t"]
+[ext_resource type="Texture2D" uid="uid://c1bw2t6220pg8" path="res://Assets/sprites/fogo/fogo1.png" id="2_46ht6"]
+[ext_resource type="Texture2D" uid="uid://cgw0dk8yd30jx" path="res://Assets/sprites/fogo/fogo2.png" id="3_c41gu"]
+[ext_resource type="Texture2D" uid="uid://dpm82b0pdf84l" path="res://Assets/sprites/fogo/fogo3.png" id="4_ariwp"]
+[ext_resource type="Texture2D" uid="uid://bi8xymrayitd1" path="res://Assets/sprites/fogo/fogo4.png" id="5_0qsps"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_46ht6"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46ht6"]
+radius = 1.0
+height = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xongx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_f2gms")
+"texture": ExtResource("2_46ht6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_7mlxe")
+"texture": ExtResource("3_c41gu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_svc7t")
+"texture": ExtResource("4_ariwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0qsps")
 }],
 "loop": true,
-"name": &"default",
-"speed": 60.0
+"name": &"normal",
+"speed": 5.0
 }]
 
 [node name="missil" type="RigidBody2D" unique_id=1922328315]
+script = ExtResource("1_46ht6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2089760665]
+scale = Vector2(0.007, 0.007)
+texture = ExtResource("1_svc7t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=991647580]
+shape = SubResource("CapsuleShape2D_46ht6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1927122825]
-position = Vector2(0, 10)
-scale = Vector2(0.04, 0.04)
-sprite_frames = SubResource("SpriteFrames_46ht6")
-frame_progress = 0.25566542
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1233514405]
-position = Vector2(0, 22)
+[node name="fogo" type="AnimatedSprite2D" parent="." unique_id=760532074]
+position = Vector2(-2.3841858e-07, 12.000003)
+scale = Vector2(0.007, 0.007)
+sprite_frames = SubResource("SpriteFrames_xongx")
+animation = &"normal"
+autoplay = "normal"
