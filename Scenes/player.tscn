@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b6jj3ydwx2vi"]
+
+[ext_resource type="Script" uid="uid://gjckrajek8tt" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://cc7w8u5wnwivc" path="res://Assets/foguete_spritesheet.png" id="1_v0iea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(0, 0, 352, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(352, 0, 352, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(704, 0, 352, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(1056, 0, 352, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(352, 384, 352, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(704, 384, 352, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3wgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvnsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t5aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}],
+"loop": true,
+"name": &"impulse",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
+radius = 5.0
+height = 26.0
+
+[node name="Player" type="RigidBody2D" unique_id=104140774]
+script = ExtResource("1_cvnsp")
+impulso = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1721138098]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_x3wgy")
+animation = &"impulse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1981146235]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_6t5aa")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=291870337]
+limit_left = 0
+limit_top = 0
+limit_right = 18424
+limit_bottom = 15360
